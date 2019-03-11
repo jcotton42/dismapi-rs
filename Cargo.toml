@@ -1,0 +1,12 @@
+[package]
+name = "dismapi"
+version = "0.1.0"
+authors = ["Joshua Cotton <jcotton42@outlook.com>"]
+edition = "2018"
+
+[build-dependencies]
+find-winsdk = "0.2"
+
+[dependencies]
+winapi = "0.3"
+wio = "0.2"
