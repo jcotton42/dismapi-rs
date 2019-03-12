@@ -525,3 +525,75 @@ pub const DISMAPI_E_INVALID_PRODUCT_KEY: HRESULT = 0xC004000Fu32 as HRESULT;
 pub const DISMAPI_E_NEEDS_REMOUNT: HRESULT = 0xC1510114u32 as HRESULT;
 pub const DISMAPI_E_UNKNOWN_FEATURE: HRESULT = 0x800f080cu32 as HRESULT;
 pub const DISMAPI_E_BUSY: HRESULT = 0x800f0902u32 as HRESULT;
+
+#[cfg(test)]
+mod tests {
+    use std::mem::{align_of, size_of};
+    use super::*;
+
+    #[test]
+    #[cfg(target_arch = "x86")]
+    fn test_size_align() {
+        assert_eq!(size_of::<DismPackage>(), 28);
+        assert_eq!(align_of::<DismPackage>(), 1);
+        assert_eq!(size_of::<DismCustomProperty>(), 12);
+        assert_eq!(align_of::<DismCustomProperty>(), 1);
+        assert_eq!(size_of::<DismFeature>(), 8);
+        assert_eq!(align_of::<DismFeature>(), 1);
+        assert_eq!(size_of::<DismCapability>(), 8);
+        assert_eq!(align_of::<DismCapability>(), 1);
+        assert_eq!(size_of::<DismPackageInfo>(), 124);
+        assert_eq!(align_of::<DismPackageInfo>(), 1);
+        assert_eq!(size_of::<DismPackageInfoEx>(), 128);
+        assert_eq!(align_of::<DismPackageInfoEx>(), 1);
+        assert_eq!(size_of::<DismFeatureInfo>(), 28);
+        assert_eq!(align_of::<DismFeatureInfo>(), 1);
+        assert_eq!(size_of::<DismCapabilityInfo>(), 24);
+        assert_eq!(align_of::<DismCapabilityInfo>(), 1);
+        assert_eq!(size_of::<DismString>(), 4);
+        assert_eq!(align_of::<DismString>(), 1);
+        assert_eq!(size_of::<DismWimCustomizedInfo>(), 44);
+        assert_eq!(align_of::<DismWimCustomizedInfo>(), 1);
+        assert_eq!(size_of::<DismImageInfo>(), 96);
+        assert_eq!(align_of::<DismImageInfo>(), 1);
+        assert_eq!(size_of::<DismMountedImageInfo>(), 20);
+        assert_eq!(align_of::<DismMountedImageInfo>(), 1);
+        assert_eq!(size_of::<DismDriverPackage>(), 72);
+        assert_eq!(align_of::<DismDriverPackage>(), 1);
+        assert_eq!(size_of::<DismDriver>(), 28);
+        assert_eq!(align_of::<DismDriver>(), 1);
+    }
+
+    #[test]
+    #[cfg(target_arch = "x86_64")]
+    fn test_size_align() {
+        assert_eq!(size_of::<DismPackage>(), 32);
+        assert_eq!(align_of::<DismPackage>(), 1);
+        assert_eq!(size_of::<DismCustomProperty>(), 24);
+        assert_eq!(align_of::<DismCustomProperty>(), 1);
+        assert_eq!(size_of::<DismFeature>(), 12);
+        assert_eq!(align_of::<DismFeature>(), 1);
+        assert_eq!(size_of::<DismCapability>(), 12);
+        assert_eq!(align_of::<DismCapability>(), 1);
+        assert_eq!(size_of::<DismPackageInfo>(), 172);
+        assert_eq!(align_of::<DismPackageInfo>(), 1);
+        assert_eq!(size_of::<DismPackageInfoEx>(), 180);
+        assert_eq!(align_of::<DismPackageInfoEx>(), 1);
+        assert_eq!(size_of::<DismFeatureInfo>(), 44);
+        assert_eq!(align_of::<DismFeatureInfo>(), 1);
+        assert_eq!(size_of::<DismCapabilityInfo>(), 36);
+        assert_eq!(align_of::<DismCapabilityInfo>(), 1);
+        assert_eq!(size_of::<DismString>(), 8);
+        assert_eq!(align_of::<DismString>(), 1);
+        assert_eq!(size_of::<DismWimCustomizedInfo>(), 44);
+        assert_eq!(align_of::<DismWimCustomizedInfo>(), 1);
+        assert_eq!(size_of::<DismImageInfo>(), 140);
+        assert_eq!(align_of::<DismImageInfo>(), 1);
+        assert_eq!(size_of::<DismMountedImageInfo>(), 28);
+        assert_eq!(align_of::<DismMountedImageInfo>(), 1);
+        assert_eq!(size_of::<DismDriverPackage>(), 100);
+        assert_eq!(align_of::<DismDriverPackage>(), 1);
+        assert_eq!(size_of::<DismDriver>(), 52);
+        assert_eq!(align_of::<DismDriver>(), 1);
+    }
+}
